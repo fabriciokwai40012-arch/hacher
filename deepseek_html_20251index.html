@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Primeiro Site no GitHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .success-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .steps {
+            text-align: left;
+            margin: 30px 0;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .step {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .feature {
+            background: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .counter {
+            font-size: 3em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Site Publicado com Sucesso!</h1>
+        
+        <div class="success-badge">
+            ✅ GitHub Pages Ativo
+        </div>
+        
+        <p>Parabéns! Seu site está agora publicado na internet.</p>
+        
+        <div class="counter" id="visitorCount">0</div>
+        <p>Visitantes online</p>
+        
+        <div class="steps">
+            <h3>📋 Como você publicou este site:</h3>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                Criou um repositório no GitHub
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                Fez upload dos arquivos HTML
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                Configurou o GitHub Pages
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                Acessou seu site online!
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <strong>🌐 Disponível 24/7</strong>
+                <p>Sempre online</p>
+            </div>
+            
+            <div class="feature">
+                <strong>💰 Gratuito</strong>
+                <p>Sem custos</p>
+            </div>
+            
+            <div class="feature">
+                <strong>⚡ Rápido</strong>
+                <p>CDN global</p>
+            </div>
+            
+            <div class="feature">
+                <strong>🔒 Seguro</strong>
+                <p>HTTPS automático</p>
+            </div>
+        </div>
+        
+        <div>
+            <a href="https://github.com" class="btn" target="_blank">Ver no GitHub</a>
+            <button class="btn" onclick="shareSite()">Compartilhar</button>
+        </div>
+        
+        <footer>
+            <p>Publicado via GitHub Pages | Seu domínio: <strong>seu-usuario.github.io</strong></p>
+        </footer>
+    </div>
+
+    <script>
+        // Contador de visitantes (simulado)
+        let count = Math.floor(Math.random() * 50) + 10;
+        const counter = document.getElementById('visitorCount');
+        
+        function updateCounter() {
+            counter.textContent = count;
+            count++;
+            setTimeout(updateCounter, 3000);
+        }
+        
+        updateCounter();
+        
+        // Função de compartilhamento
+        function shareSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Meu Site no GitHub',
+                    text: 'Confira meu site publicado no GitHub Pages!',
+                    url: window.location.href
+                });
+            } else {
+                alert('Copie o link para compartilhar: ' + window.location.href);
+            }
+        }
+        
+        // Efeito de digitação no título
+        const title = document.querySelector('h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                title.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
